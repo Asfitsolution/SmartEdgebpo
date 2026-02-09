@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartEdge Accounting | Professional Bookkeeping & Tax Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --primary-blue: #1a3c8b;
+            --secondary-blue: #2d55a7;
+            --accent-gold: #d4af37;
+            --accent-green: #28a745;
+            --dark-bg: #0f1b3d;
+            --light-bg: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #666;
+            --text-white: #fff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-accent {
+            background: var(--accent-green);
+        }
+
+        .btn-accent:hover {
+            background: #218838;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--dark-bg);
+            color: var(--text-white);
+            padding: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 30px;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info i {
+            color: var(--accent-gold);
+        }
+
+        .social-links a {
+            color: var(--text-white);
+            margin-left: 15px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Header & Logo */
+        .main-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            height: 70px;
+            width: auto;
+        }
+
+        .logo-text h1 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text .tagline {
+            font-size: 0.95rem;
+            color: var(--accent-green);
+            font-weight: 600;
+            font-style: italic;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation */
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .main-nav li {
+            position: relative;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            padding: 10px 18px;
+            display: block;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .main-nav a:hover, .main-nav li.active a {
+            color: var(--primary-blue);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .main-nav li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-menu li {
+            width: 100%;
+        }
+
+        .dropdown-menu a {
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 27, 61, 0.85), rgba(15, 27, 61, 0.9)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--light-bg);
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-box {
+            padding: 30px 20px;
+        }
+
+        .stat-box .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-box p {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            background: var(--primary-blue);
+            color: white;
+            font-size: 2.5rem;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        /* Clients Section */
+        .clients-showcase {
+            text-align: center;
+        }
+
+        .client-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            align-items: center;
+        }
+
+        .client-logo {
+            height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .client-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--light-bg);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .client-details h4 {
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .client-details p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            position: relative;
+            color: var(--text-white);
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gold);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .contact-list i {
+            color: var(--accent-gold);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2a3a5a;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Custom Logo Styling */
+        .custom-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .custom-logo .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-logo .logo-icon:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .custom-logo .logo-icon:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: -5px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .custom-logo .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .custom-logo .logo-text h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            letter-spacing: -1px;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .custom-logo .logo-text .tagline {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                padding: 0;
+            }
+            
+            .main-nav.active ul {
+                display: flex;
+            }
+            
+            .main-nav li {
+                width: 100%;
+            }
+            
+            .main-nav a {
+                padding: 15px 20px;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                display: none;
+                padding-left: 20px;
+            }
+            
+            .main-nav li:hover .dropdown-menu {
+                display: block;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .custom-logo .logo-text h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar .container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .client-logos {
+                gap: 20px;
+            }
+            
+            .client-logo {
+                height: 40px;
+            }
+            
+            .custom-logo {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .custom-logo .logo-text h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar with Contact Info -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <div><i class="fas fa-phone"></i> +92 300 123-4567</div>
+                <div><i class="fas fa-envelope"></i> info@smartedgeaccounting.com</div>
+                <div><i class="fas fa-clock"></i> Mon-Fri 9:00AM-6:00PM</div>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header with Custom Logo -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo-container custom-logo">
+                <div class="logo-icon">S</div>
+                <div class="logo-text">
+                    <h1>SmartEdge</h1>
+                    <p class="tagline">Precision in Bookkeeping & Tax Excellence</p>
+                </div>
+            </a>
+            
+            <nav class="main-nav" id="mainNav">
+                <div class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul>
+                    <li class="active"><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li class="has-dropdown">
+                        <a href="#services">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#services">Bookkeeping Services</a></li>
+                            <li><a href="#services">Tax Planning & Filing</a></li>
+                            <li><a href="#services">Financial Reporting</a></li>
+                            <li><a href="#services">Payroll Processing</a></li>
+                            <li><a href="#services">Audit Support</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#clients">Our Clients</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Pioneers of Professional Accounting & Tax Solutions</h2>
+            <p>SmartEdge Accounting delivers comprehensive bookkeeping, tax planning, and financial reporting services tailored for businesses of all sizes. We ensure compliance, maximize savings, and provide clarity in your financial landscape.</p>
+            <a href="#contact" class="btn btn-accent">Get Your Free Financial Consultation</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="number">850+</span>
+                    <p>Satisfied Clients</p>
+                </div>
+                <div class="stat-box">
+                    <span class="number">24</span>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-box">
+                    <span class="number">15</span>
+                    <p>Industry Specializations</p>
+                </div>
+                <div class="stat-box">
+                    <span class="number">99.2%</span>
+                    <p>Tax Filing Accuracy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Leading Accounting & Tax Firm</h2>
+                <p>Making a Difference in Financial Management & Beyond</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Your Trusted Partner in Financial Excellence</h3>
+                    <p>SmartEdge Accounting is a premier accounting firm specializing in bookkeeping, tax preparation, and financial advisory services. Founded in 2000, we introduced structured financial outsourcing to Pakistan's corporate sector.</p>
+                    <p>We are an ISO 9001:2015 certified firm with over 850 clients in our portfolio including multinational corporations, SMEs, and startups. Our expertise spans various industries including manufacturing, retail, technology, and services.</p>
+                    <p>SmartEdge is the only accounting firm that offers End-to-End financial solutions Under One Roof. Our goal is to make financial management as efficient, compliant, and strategic as possible.</p>
+                    <a href="#services" class="btn">Explore Our Services</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="SmartEdge Accounting Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive accounting solutions tailored to meet your business needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Professional Bookkeeping</h3>
+                        <p>Accurate recording of financial transactions, maintenance of general ledgers, and preparation of trial balances with our automated systems.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Tax Planning & Filing</h3>
+                        <p>Strategic tax planning, preparation, and timely filing of corporate and individual tax returns to ensure compliance and maximize savings.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Financial Reporting</h3>
+                        <p>Preparation of balance sheets, income statements, cash flow statements, and management reports for informed decision-making.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Payroll Processing</h3>
+                        <p>Complete payroll management including salary processing, tax deductions, and compliance with labor regulations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Clients Section -->
+    <section class="clients" id="clients">
+        <div class="container">
+            <div class="section-title">
+                <h2>Some Of Our Esteemed Clients</h2>
+                <p>Trusted by businesses across industries for financial excellence</p>
+            </div>
+            <div class="clients-showcase">
+                <div class="client-logos">
+                    <!-- Client logos represented as colored boxes with initials -->
+                    <div class="client-logo" style="background-color: #0033a0; color: white; width: 120px; height: 60px; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 4px;">UBL</div>
+                    <div class="client-logo" style="background-color: #ff6900; color: white; width: 120px; height: 60px; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 4px;">KE</div>
+                    <div class="client-logo" style="background-color: #00843d; color: white; width: 120px; height: 60px; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 4px;">SHAN</div>
+                    <div class="client-logo" style="background-color: #0056a3; color: white; width: 120px; height: 60px; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 4px;">UNILEVER</div>
+                    <div class="client-logo" style="background-color: #e30613; color: white; width: 120px; height: 60px; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 4px;">EBM</div>
+                    <div class="client-logo" style="background-color: #333333; color: white; width: 120px; height: 60px; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 4px;">GERRY'S</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>See why businesses trust SmartEdge for their accounting needs</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "SmartEdge Accounting transformed our financial management. Their bookkeeping services are meticulous, and their tax planning saved us 22% in liabilities last year. The team is always responsive and proactive."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-avatar">AR</div>
+                        <div class="client-details">
+                            <h4>Ahmed Raza</h4>
+                            <p>CEO, Textile Manufacturing Group</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div class="testimonial" style="max-width: 350px;">
+                    <div class="testimonial-text">
+                        "As a medium-sized retailer, we needed reliable accounting support. SmartEdge handles everything from daily bookkeeping to complex tax filings with absolute precision."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-avatar" style="background-color: #28a745;">FS</div>
+                        <div class="client-details">
+                            <h4>Fatima Shah</h4>
+                            <p>Owner, National Retail Chain</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial" style="max-width: 350px;">
+                    <div class="testimonial-text">
+                        "The financial reports provided by SmartEdge give us clear insights for strategic decisions. Their payroll processing is flawless, and they ensure 100% regulatory compliance."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-avatar" style="background-color: #6f42c1;">MK</div>
+                        <div class="client-details">
+                            <h4>M. Kamran</h4>
+                            <p>Finance Director, Tech Solutions Ltd.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="custom-logo" style="align-items: flex-start;">
+                        <div class="logo-icon" style="width: 50px; height: 50px; font-size: 1.5rem;">S</div>
+                        <div class="logo-text">
+                            <h1 style="font-size: 1.8rem;">SmartEdge</h1>
+                            <p class="tagline">Precision in Bookkeeping & Tax Excellence</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; color: #ccc;">Professional bookkeeping, tax, and financial advisory services since 2000. We help businesses achieve financial clarity, compliance, and strategic advantage.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#clients">Our Clients</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Bookkeeping Services</a></li>
+                        <li><a href="#services">Tax Planning & Filing</a></li>
+                        <li><a href="#services">Financial Reporting</a></li>
+                        <li><a href="#services">Payroll Processing</a></li>
+                        <li><a href="#services">Audit Support</a></li>
+                        <li><a href="#services">Business Advisory</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>123 Financial Center,<br>Karachi, Pakistan</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>+92 300 123-4567<br>+92 21 34567890</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>info@smartedgeaccounting.com<br>support@smartedgeaccounting.com</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 SmartEdge Accounting. All Rights Reserved. | Precision in Bookkeeping & Tax Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 992) {
+                    document.getElementById('mainNav').classList.remove('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Dropdown functionality for mobile
+        document.querySelectorAll('.has-dropdown > a').forEach(dropdownLink => {
+            dropdownLink.addEventListener('click', function(e) {
+                if(window.innerWidth <= 992) {
+                    e.preventDefault();
+                    const dropdown = this.parentElement.querySelector('.dropdown-menu');
+                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
